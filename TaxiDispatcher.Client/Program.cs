@@ -76,7 +76,7 @@ namespace TaxiDispatcher.Client
                 {
                     Console.WriteLine(e.Message);
                     Console.WriteLine("");
-                }  
+                }
                 else
                     throw;
             }

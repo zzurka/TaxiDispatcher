@@ -5,7 +5,7 @@ namespace TaxiDispatcher.App
 {
     public class Scheduler
     {
-        protected Taxi taxi1 = new Taxi { Taxi_driver_id = 1, Taxi_driver_name = "Predrag", Taxi_company = "Naxi", Location = 1};
+        protected Taxi taxi1 = new Taxi { Taxi_driver_id = 1, Taxi_driver_name = "Predrag", Taxi_company = "Naxi", Location = 1 };
         protected Taxi taxi2 = new Taxi { Taxi_driver_id = 2, Taxi_driver_name = "Nenad", Taxi_company = "Naxi", Location = 4 };
         protected Taxi taxi3 = new Taxi { Taxi_driver_id = 3, Taxi_driver_name = "Dragan", Taxi_company = "Alfa", Location = 6 };
         protected Taxi taxi4 = new Taxi { Taxi_driver_id = 4, Taxi_driver_name = "Goran", Taxi_company = "Gold", Location = 7 };
@@ -54,24 +54,24 @@ namespace TaxiDispatcher.App
             switch (min_taxi.Taxi_company)
             {
                 case "Naxi":
-                {
-                    ride.Price = 10 * Math.Abs(location_from - location_to);
-                    break;
-                }
+                    {
+                        ride.Price = 10 * Math.Abs(location_from - location_to);
+                        break;
+                    }
                 case "Alfa":
-                {
-                    ride.Price = 15 * Math.Abs(location_from - location_to);
-                    break;
-                }
+                    {
+                        ride.Price = 15 * Math.Abs(location_from - location_to);
+                        break;
+                    }
                 case "Gold":
-                {
-                    ride.Price = 13 * Math.Abs(location_from - location_to);
-                    break;
-                }
+                    {
+                        ride.Price = 13 * Math.Abs(location_from - location_to);
+                        break;
+                    }
                 default:
-                {
-                    throw new Exception("Ilegal company");
-                }
+                    {
+                        throw new Exception("Ilegal company");
+                    }
             }
 
             if (ride_type == Constants.InterCity)
