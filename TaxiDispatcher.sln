@@ -26,15 +26,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{B81456C5-9419-43D6-A1D3-B45F8D7072BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiDispatcher.ConsoleClient", "TaxiDispatcher.ConsoleClient\TaxiDispatcher.ConsoleClient.csproj", "{F1CEF0D0-1BCF-4992-B8CA-9B04799C9F22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiDispatcher.ConsoleClient", "TaxiDispatcher.ConsoleClient\TaxiDispatcher.ConsoleClient.csproj", "{F1CEF0D0-1BCF-4992-B8CA-9B04799C9F22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiDispatcher.WebApi", "TaxiDispatcher.WebApi\TaxiDispatcher.WebApi.csproj", "{4F7E9A82-9495-478B-93DD-93D8DACAE1B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiDispatcher.WebApi", "TaxiDispatcher.WebApi\TaxiDispatcher.WebApi.csproj", "{4F7E9A82-9495-478B-93DD-93D8DACAE1B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiDispatcher.Domain", "TaxiDispatcher.Domain\TaxiDispatcher.Domain.csproj", "{859F70D3-202F-4557-94A7-1A9A2D4E3475}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiDispatcher.Domain", "TaxiDispatcher.Domain\TaxiDispatcher.Domain.csproj", "{859F70D3-202F-4557-94A7-1A9A2D4E3475}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiDispatcher.Application", "TaxiDispatcher.Application\TaxiDispatcher.Application.csproj", "{48648C77-99D8-497F-A5AF-4813D96DE423}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiDispatcher.Application", "TaxiDispatcher.Application\TaxiDispatcher.Application.csproj", "{48648C77-99D8-497F-A5AF-4813D96DE423}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiDispatcher.Infrastructure", "TaxiDispatcher.Infrastructure\TaxiDispatcher.Infrastructure.csproj", "{BCCCCEAE-4BA5-4C34-889B-1AE19086EB12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiDispatcher.Infrastructure", "TaxiDispatcher.Infrastructure\TaxiDispatcher.Infrastructure.csproj", "{BCCCCEAE-4BA5-4C34-889B-1AE19086EB12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

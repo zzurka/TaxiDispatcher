@@ -1,6 +1,6 @@
 ﻿using TaxiDispatcher.Domain.Entities;
 
-namespace TaxiDispatcher.Application.Interfaces
+namespace TaxiDispatcher.Application.Common.Interfaces
 {
     public interface ITaxiSchedulerService
     {

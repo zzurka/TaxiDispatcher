@@ -5,15 +5,17 @@ namespace TaxiDispatcher.Domain.Entities
 {
     public class Ride : BaseEntity
     {
-        public Ride(Guid id, RideRequest rideRequest, Taxi taxi)
-        {
-            Id = id;
-            RideRequest = rideRequest ?? throw new ArgumentNullException(nameof(rideRequest));
-            Taxi = taxi ?? throw new ArgumentNullException(nameof(taxi));
-        }
+        // public Ride(Guid id, RideRequest rideRequest, Taxi taxi, RideStatus rideStatus)
+        // {
+        //    Id = id;
+        //    RideRequest = rideRequest ?? throw new ArgumentNullException(nameof(rideRequest));
+        //    Taxi = taxi ?? throw new ArgumentNullException(nameof(taxi));
+        //    RideStatus = rideStatus;
+        // }
 
         public RideRequest RideRequest { get; }
         public Taxi Taxi { get; }
+        public RideStatus RideStatus { get; set; }
 
         public int Price
         {

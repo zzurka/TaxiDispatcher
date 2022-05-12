@@ -13,6 +13,7 @@ namespace TaxiDispatcher.Infrastructure.Persistence.InMemoryDatabase
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Taxi>().HasKey(x => x.Id);
+            modelBuilder.Entity<TaxiCompany>().HasKey(x => x.Id);
             modelBuilder.Entity<Ride>().HasKey(x => x.Id);
         }
     }

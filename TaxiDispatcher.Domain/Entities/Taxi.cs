@@ -4,13 +4,13 @@ namespace TaxiDispatcher.Domain.Entities
 {
     public class Taxi : BaseEntity
     {
-        public Taxi(Guid id, string driverName, TaxiCompany taxiCompany, int location)
-        {
-            Id = id;
-            DriverName = driverName;
-            TaxiCompany = taxiCompany;
-            Location = location;
-        }
+        // public Taxi(Guid id, string driverName, TaxiCompany taxiCompany, int location)
+        // {
+        //    Id = id;
+        //    DriverName = driverName;
+        //    TaxiCompany = taxiCompany;
+        //    Location = location;
+        // }
 
         public string DriverName { get; set; }
         public TaxiCompany TaxiCompany { get; set; }
