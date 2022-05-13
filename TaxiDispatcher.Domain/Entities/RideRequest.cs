@@ -1,20 +1,13 @@
-﻿using TaxiDispatcher.Domain.Enums;
+﻿using TaxiDispatcher.Domain.Common;
+using TaxiDispatcher.Domain.Enums;
 
 namespace TaxiDispatcher.Domain.Entities
 {
-    public class RideRequest
+    public class RideRequest : BaseEntity
     {
-        public RideRequest(int locationFrom, int locationTo, RideType rideType, DateTime rideTime)
-        {
-            LocationFrom = locationFrom;
-            LocationTo = locationTo;
-            RideType = rideType;
-            RideTime = rideTime;
-        }
-
-        public int LocationFrom { get; }
-        public int LocationTo { get; }
-        public RideType RideType { get; }
-        public DateTime RideTime { get; }
+        public int LocationFrom { get; set; }
+        public int LocationTo { get; set; }
+        public RideType RideType { get; set; }
+        public DateTime RideTime { get; set; }
     }
 }

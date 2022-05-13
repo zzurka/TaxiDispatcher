@@ -4,26 +4,9 @@ namespace TaxiDispatcher.Domain.Entities
 {
     public class Taxi : BaseEntity
     {
-        // public Taxi(Guid id, string driverName, TaxiCompany taxiCompany, int location)
-        // {
-        //    Id = id;
-        //    DriverName = driverName;
-        //    TaxiCompany = taxiCompany;
-        //    Location = location;
-        // }
-
-        public string DriverName { get; set; }
-        public TaxiCompany TaxiCompany { get; set; }
+        public int DriverId { get; set; }
+        public string DriverName { get; set; } = string.Empty;
+        public TaxiCompany TaxiCompany { get; set; } = null!;
         public int Location { get; set; }
-
-        public int DistanceFromLocation(int location)
-        {
-            return Math.Abs(Location - location);
-        }
-
-        public void DriveToLocation(int location)
-        {
-            Location = location;
-        }
     }
 }

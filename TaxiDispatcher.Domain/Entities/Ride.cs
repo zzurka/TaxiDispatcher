@@ -5,27 +5,9 @@ namespace TaxiDispatcher.Domain.Entities
 {
     public class Ride : BaseEntity
     {
-        // public Ride(Guid id, RideRequest rideRequest, Taxi taxi, RideStatus rideStatus)
-        // {
-        //    Id = id;
-        //    RideRequest = rideRequest ?? throw new ArgumentNullException(nameof(rideRequest));
-        //    Taxi = taxi ?? throw new ArgumentNullException(nameof(taxi));
-        //    RideStatus = rideStatus;
-        // }
-
-        public RideRequest RideRequest { get; }
-        public Taxi Taxi { get; }
+        public RideRequest RideRequest { get; set; } = null!;
+        public Taxi Taxi { get; set; } = null!;
         public RideStatus RideStatus { get; set; }
-
-        public int Price
-        {
-            get
-            {
-                int price = Taxi.TaxiCompany.BasePrice * Math.Abs(RideRequest.LocationFrom - RideRequest.LocationTo);
-                int nightRideMultiplier = RideRequest.RideTime.Hour is < 6 or > 22 ? 2 : 1;
-                int rideTypeMultiplier = RideRequest.RideType == RideType.InterCity ? 2 : 1;
-                return price * rideTypeMultiplier * nightRideMultiplier;
-            }
-        }
+        public int Price { get; set; }
     }
 }

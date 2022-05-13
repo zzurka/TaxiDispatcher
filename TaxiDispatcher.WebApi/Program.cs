@@ -1,6 +1,6 @@
-using AutoMapper;
+using FluentValidation.AspNetCore;
+using Serilog;
 using TaxiDispatcher.Application;
-using TaxiDispatcher.Application.Taxi.Mappers;
 using TaxiDispatcher.Infrastructure;
 using TaxiDispatcher.Infrastructure.Persistence.InMemoryDatabase;
 
@@ -9,19 +9,15 @@ var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddFluentValidation();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
+builder.Host.UseSerilog();
+
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(configuration);
-
-MapperConfiguration mappingConfig = new MapperConfiguration(mc =>
-{
-    mc.AddProfile(new TaxiMappingProfile());
-});
-IMapper mapper = mappingConfig.CreateMapper();
-builder.Services.AddSingleton(mapper);
 
 var app = builder.Build();
 

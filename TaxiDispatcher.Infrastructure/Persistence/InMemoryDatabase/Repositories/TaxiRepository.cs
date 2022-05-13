@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TaxiDispatcher.Application.Common.Exceptions;
 using TaxiDispatcher.Application.Common.Repositories;
 using TaxiDispatcher.Domain.Entities;
 
@@ -20,15 +19,20 @@ namespace TaxiDispatcher.Infrastructure.Persistence.InMemoryDatabase.Repositorie
             {
                 taxi.Id = Guid.NewGuid();
             }
+
             Taxi created = _context.Taxis.Add(taxi).Entity;
             await _context.SaveChangesAsync();
             return created;
         }
 
-        public async Task<Taxi> GetTaxiById(Guid id)
+        public async Task<Taxi?> GetTaxiById(Guid id)
         {
-            Taxi? taxi = await _context.Taxis.Include(x => x.TaxiCompany).FirstOrDefaultAsync(x => x.Id == id);
-            return taxi ?? throw new TaxiNotFoundException();
+            return await _context.Taxis.Include(x => x.TaxiCompany).FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<Taxi?> GetTaxiByDriverId(int id)
+        {
+            return await _context.Taxis.Include(x => x.TaxiCompany).FirstOrDefaultAsync(x => x.DriverId == id);
         }
 
         public async Task<IEnumerable<Taxi>> GetAllTaxis()
@@ -36,9 +40,25 @@ namespace TaxiDispatcher.Infrastructure.Persistence.InMemoryDatabase.Repositorie
             return await _context.Taxis.ToListAsync();
         }
 
-        public Task<Taxi> GetTaxiClosestToLocation(int location)
+        public async Task<bool> UpdateTaxiLocation(Guid id, int location)
         {
-            throw new NotImplementedException();
+            Taxi? taxi = await GetTaxiById(id);
+
+            if (taxi == null)
+            {
+                return false;
+            }
+
+            taxi.Location = location;
+            _context.Entry(taxi).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<IEnumerable<TaxiLocation>> GetAllTaxiLocations()
+        {
+            return await _context.Taxis.Select(x => new TaxiLocation { TaxiId = x.Id, Location = x.Location })
+                                       .ToListAsync();
         }
     }
 }

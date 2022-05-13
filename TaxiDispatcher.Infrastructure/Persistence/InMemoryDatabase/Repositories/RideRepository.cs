@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TaxiDispatcher.Application.Common.Exceptions;
 using TaxiDispatcher.Application.Common.Repositories;
 using TaxiDispatcher.Domain.Entities;
 using TaxiDispatcher.Domain.Enums;
@@ -26,23 +25,37 @@ namespace TaxiDispatcher.Infrastructure.Persistence.InMemoryDatabase.Repositorie
             return created;
         }
 
-        public async Task<Ride> GetRideById(Guid id)
+        public async Task<Ride?> GetRideById(Guid id)
         {
-            Ride? ride = await _context.Rides.FirstOrDefaultAsync(x => x.Id == id);
-            return ride ?? throw new RideNotFoundException();
+            return await _context.Rides.Include(x => x.RideRequest)
+                                       .Include(x => x.Taxi)
+                                       .ThenInclude(x => x.TaxiCompany)
+                                       .FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task UpdateRideStatusByRideId(Guid id, RideStatus status)
+        public async Task<Ride?> UpdateRideStatusByRideId(Guid id, RideStatus status)
         {
-            Ride ride = await GetRideById(id);
+            Ride? ride = await GetRideById(id);
+            
+            if (ride == null)
+            {
+                return null;
+            }
+            
             ride.RideStatus = status;
             _context.Entry(ride).State = EntityState.Modified;
             await _context.SaveChangesAsync();
+            return ride;
         }
 
         public async Task<IEnumerable<Ride>> GetRidesForTaxiId(Guid id)
         {
             return await _context.Rides.Where(x => x.Taxi.Id == id).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Ride>> GetRidesForDriverId(int id)
+        {
+            return await _context.Rides.Where(x => x.Taxi.DriverId == id).ToListAsync();
         }
     }
 }

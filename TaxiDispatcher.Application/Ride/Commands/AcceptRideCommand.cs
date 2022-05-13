@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using TaxiDispatcher.Application.DTO;
 
-namespace TaxiDispatcher.Application.Taxi.Queries
+namespace TaxiDispatcher.Application.Ride.Commands
 {
-    public class GetTaxiByIdQuery : IRequest<TaxiDto?>
+    public class AcceptRideCommand : IRequest<RideDto>
     {
         public Guid Id { get; set; }
     }

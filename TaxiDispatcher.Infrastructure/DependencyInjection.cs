@@ -11,8 +11,8 @@ namespace TaxiDispatcher.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<InMemoryDbContext>(options => options.UseInMemoryDatabase("TaxiDispatcherDatabase"));
-            
+            services.AddDbContext<InMemoryDbContext>(options => options.UseInMemoryDatabase("TaxiDispatcherInMemoryDatabase"));
+
             services.AddScoped<ITaxiRepository, TaxiRepository>();
             services.AddScoped<IRideRepository, RideRepository>();
 
