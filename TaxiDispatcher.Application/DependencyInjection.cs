@@ -4,6 +4,8 @@ using MapsterMapper;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using TaxiDispatcher.Application.Common.Behaviours;
+
 namespace TaxiDispatcher.Application
 {
     public static class DependencyInjection
@@ -14,6 +16,8 @@ namespace TaxiDispatcher.Application
             services.AddScoped<IMapper, ServiceMapper>();
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
             return services;
         }
 

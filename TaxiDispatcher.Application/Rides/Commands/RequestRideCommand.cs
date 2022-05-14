@@ -1,20 +1,21 @@
 ﻿using Mapster;
+using TaxiDispatcher.Application.Common.Interfaces;
+using TaxiDispatcher.Application.DTO;
 using TaxiDispatcher.Domain.Entities;
 using TaxiDispatcher.Domain.Enums;
 
-namespace TaxiDispatcher.Application.DTO
+namespace TaxiDispatcher.Application.Rides.Commands
 {
-    public class RideRequestDto : IRegister
+    public class RequestRideCommand : IRequestWrapper<RideDto>, IRegister
     {
-        public Guid Id { get; set; }
         public int LocationFrom { get; set; }
         public int LocationTo { get; set; }
         public RideType RideType { get; set; }
         public DateTime RideTime { get; set; }
-
+        
         public void Register(TypeAdapterConfig config)
         {
-            config.NewConfig<RideRequest, RideRequestDto>().TwoWays();
+            config.NewConfig<RequestRideCommand, RideRequest>();
         }
     }
 }

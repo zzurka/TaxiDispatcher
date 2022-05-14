@@ -1,8 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using TaxiDispatcher.Application.Common.Models;
 using TaxiDispatcher.Application.DTO;
-using TaxiDispatcher.Application.Taxi.Commands;
-using TaxiDispatcher.Application.Taxi.Queries;
+using TaxiDispatcher.Application.Taxis.Commands;
+using TaxiDispatcher.Application.Taxis.Queries;
 
 namespace TaxiDispatcher.WebApi.Controllers
 {
@@ -18,7 +19,7 @@ namespace TaxiDispatcher.WebApi.Controllers
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [HttpGet("{id:guid}")]
-        public async Task<ActionResult<TaxiDto>> GetTaxiById(Guid id, CancellationToken cancellationToken)
+        public async Task<ActionResult<ServiceResult<TaxiDto>>> GetTaxiById(Guid id, CancellationToken cancellationToken)
         {
             return Ok(await Mediator.Send(new GetTaxiByIdQuery { Id = id }, cancellationToken));
         }
@@ -30,7 +31,7 @@ namespace TaxiDispatcher.WebApi.Controllers
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [HttpGet("Driver/{id:int}")]
-        public async Task<ActionResult<TaxiDto>> GetTaxiByDriverId(int id, CancellationToken cancellationToken)
+        public async Task<ActionResult<ServiceResult<TaxiDto>>> GetTaxiByDriverId(int id, CancellationToken cancellationToken)
         {
             return Ok(await Mediator.Send(new GetTaxiByDriverIdQuery { Id = id }, cancellationToken));
         }
@@ -42,7 +43,7 @@ namespace TaxiDispatcher.WebApi.Controllers
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [HttpPost("UpdateLocation")]
-        public async Task<ActionResult<bool>> UpdateTaxiLocation(UpdateTaxiLocationCommand command, CancellationToken cancellationToken)
+        public async Task<ActionResult<ServiceResult<bool>>> UpdateTaxiLocation(UpdateTaxiLocationCommand command, CancellationToken cancellationToken)
         {
             return Ok(await Mediator.Send(command, cancellationToken));
         }
@@ -54,7 +55,7 @@ namespace TaxiDispatcher.WebApi.Controllers
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         [HttpGet("Driver/{id:int}/Earnings")]
-        public async Task<ActionResult<string>> GetDriverEarnings(int id, CancellationToken cancellationToken)
+        public async Task<ActionResult<ServiceResult<string>>> GetDriverEarnings(int id, CancellationToken cancellationToken)
         {
             return Ok(await Mediator.Send(new GetDriverEarningsQuery { Id = id }, cancellationToken));
         }

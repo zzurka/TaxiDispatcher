@@ -22,6 +22,7 @@ namespace TaxiDispatcher.Infrastructure.Persistence.InMemoryDatabase.Repositorie
 
             Taxi created = _context.Taxis.Add(taxi).Entity;
             await _context.SaveChangesAsync();
+            
             return created;
         }
 
@@ -52,6 +53,7 @@ namespace TaxiDispatcher.Infrastructure.Persistence.InMemoryDatabase.Repositorie
             taxi.Location = location;
             _context.Entry(taxi).State = EntityState.Modified;
             await _context.SaveChangesAsync();
+
             return true;
         }
 

@@ -1,4 +1,5 @@
 ﻿using Mapster;
+using TaxiDispatcher.Domain.Entities;
 using TaxiDispatcher.Domain.Enums;
 
 namespace TaxiDispatcher.Application.DTO
@@ -13,7 +14,7 @@ namespace TaxiDispatcher.Application.DTO
 
         public void Register(TypeAdapterConfig config)
         {
-            config.NewConfig<Domain.Entities.Ride, RideDto>().TwoWays();
+            config.NewConfig<Ride, RideDto>().TwoWays();
         }
     }
 }

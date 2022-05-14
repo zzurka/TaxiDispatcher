@@ -3,13 +3,18 @@ using Serilog;
 using TaxiDispatcher.Application;
 using TaxiDispatcher.Infrastructure;
 using TaxiDispatcher.Infrastructure.Persistence.InMemoryDatabase;
+using TaxiDispatcher.WebApi.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
 ConfigurationManager configuration = builder.Configuration;
 
 // Add services to the container.
-builder.Services.AddControllers().AddFluentValidation();
+
+// builder.Services.AddControllers().AddFluentValidation();
+builder.Services.AddControllers(options => options.Filters.Add<ApiExceptionFilterAttribute>())
+                .AddFluentValidation(x => x.AutomaticValidationEnabled = false);
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

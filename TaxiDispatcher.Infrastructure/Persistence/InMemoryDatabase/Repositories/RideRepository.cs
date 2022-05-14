@@ -20,8 +20,10 @@ namespace TaxiDispatcher.Infrastructure.Persistence.InMemoryDatabase.Repositorie
             {
                 ride.Id = Guid.NewGuid();
             }
+
             Ride created = _context.Rides.Add(ride).Entity;
             await _context.SaveChangesAsync();
+            
             return created;
         }
 
@@ -45,6 +47,7 @@ namespace TaxiDispatcher.Infrastructure.Persistence.InMemoryDatabase.Repositorie
             ride.RideStatus = status;
             _context.Entry(ride).State = EntityState.Modified;
             await _context.SaveChangesAsync();
+
             return ride;
         }
 
@@ -55,7 +58,7 @@ namespace TaxiDispatcher.Infrastructure.Persistence.InMemoryDatabase.Repositorie
 
         public async Task<IEnumerable<Ride>> GetRidesForDriverId(int id)
         {
-            return await _context.Rides.Where(x => x.Taxi.DriverId == id).ToListAsync();
+            return await _context.Rides.Where(x => x.Taxi.DriverId == id && x.RideStatus == RideStatus.Finished).ToListAsync();
         }
     }
 }
