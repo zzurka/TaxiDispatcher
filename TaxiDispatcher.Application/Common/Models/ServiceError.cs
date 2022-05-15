@@ -5,8 +5,8 @@
     {
         public ServiceError(string message, int code)
         {
-            this.Message = message;
-            this.Code = code;
+            Message = message;
+            Code = code;
         }
 
         public ServiceError() { }

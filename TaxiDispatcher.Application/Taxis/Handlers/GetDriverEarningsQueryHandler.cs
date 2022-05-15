@@ -29,7 +29,7 @@ namespace TaxiDispatcher.Application.Taxis.Handlers
             
             if (driverRidesList.Any())
             {
-                foreach (Domain.Entities.Ride ride in driverRidesList.ToList())
+                foreach (Ride ride in driverRidesList.ToList())
                 {
                     sb.AppendLine($"Price: {ride.Price}");
                     total += ride.Price;

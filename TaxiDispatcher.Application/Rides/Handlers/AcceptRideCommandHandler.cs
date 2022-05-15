@@ -30,7 +30,7 @@ namespace TaxiDispatcher.Application.Rides.Handlers
 
             if (ride == null)
             {
-                throw new NotFoundException("Ride doesn't exist!");
+                throw new NotFoundException(nameof(Ride), request.Id);
             }
 
             // Update taxi location

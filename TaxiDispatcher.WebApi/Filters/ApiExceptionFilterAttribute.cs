@@ -78,7 +78,11 @@ namespace TaxiDispatcher.WebApi.Filters
 
         private static void HandleNotFoundException(ExceptionContext context)
         {
-            var details = ServiceResult.Failed(ServiceError.CustomMessage(context.Exception is NotFoundException exception ? exception.Message : ServiceError.NotFound.ToString()));
+            var error = ServiceError.CustomMessage(context.Exception is NotFoundException exception
+                ? exception.Message
+                : ServiceError.NotFound.ToString() ?? "The specified resource was not found.");
+
+            var details = ServiceResult.Failed(error);
 
             context.Result = new NotFoundObjectResult(details);
 

@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiDispatcher.App", "TaxiDispatcher.App\TaxiDispatcher.App.csproj", "{DFFCB38F-F59E-4F54-84DA-0D56E1CB2C78}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiDispatcher.Client", "TaxiDispatcher.Client\TaxiDispatcher.Client.csproj", "{1AEF0179-5DDF-4EFC-B76F-617729EA58E4}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0400C7DA-2C7B-496D-9F55-E07B4845C3A1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{21AB34AE-5422-48EF-B7F8-BC2D370D6C0D}"
@@ -37,14 +33,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DFFCB38F-F59E-4F54-84DA-0D56E1CB2C78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DFFCB38F-F59E-4F54-84DA-0D56E1CB2C78}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DFFCB38F-F59E-4F54-84DA-0D56E1CB2C78}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DFFCB38F-F59E-4F54-84DA-0D56E1CB2C78}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1AEF0179-5DDF-4EFC-B76F-617729EA58E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1AEF0179-5DDF-4EFC-B76F-617729EA58E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1AEF0179-5DDF-4EFC-B76F-617729EA58E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1AEF0179-5DDF-4EFC-B76F-617729EA58E4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F1CEF0D0-1BCF-4992-B8CA-9B04799C9F22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F1CEF0D0-1BCF-4992-B8CA-9B04799C9F22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1CEF0D0-1BCF-4992-B8CA-9B04799C9F22}.Release|Any CPU.ActiveCfg = Release|Any CPU
