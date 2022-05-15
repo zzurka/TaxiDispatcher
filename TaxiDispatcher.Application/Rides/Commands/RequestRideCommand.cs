@@ -11,7 +11,7 @@ namespace TaxiDispatcher.Application.Rides.Commands
         public int LocationFrom { get; set; }
         public int LocationTo { get; set; }
         public RideType RideType { get; set; }
-        public DateTime RideTime { get; set; }
+        public string? RideTime { get; set; }
         
         public void Register(TypeAdapterConfig config)
         {
