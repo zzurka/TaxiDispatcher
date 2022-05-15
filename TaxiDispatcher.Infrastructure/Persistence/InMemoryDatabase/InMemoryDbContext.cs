@@ -5,8 +5,9 @@ namespace TaxiDispatcher.Infrastructure.Persistence.InMemoryDatabase
 {
     public class InMemoryDbContext : DbContext
     {
+        public InMemoryDbContext() { }
         public InMemoryDbContext(DbContextOptions<InMemoryDbContext> options) : base(options) { }
-
+        
         public DbSet<Taxi> Taxis { get; set; } = null!;
         public DbSet<Ride> Rides { get; set; } = null!;
         
