@@ -25,7 +25,7 @@ namespace TaxiDispatcher.Application.Rides.Handlers
 
             return ride != null
                 ? ServiceResult.Success(_mapper.Map<RideDto>(ride))
-                : ServiceResult.Failed<RideDto>(ServiceError.RideNotFound);
+                : ServiceResult.Failed<RideDto>(ServiceError.RideNotFound(request.Id));
         }
     }
 }

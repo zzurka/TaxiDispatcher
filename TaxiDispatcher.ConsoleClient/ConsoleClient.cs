@@ -1,21 +1,23 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using TaxiDispatcher.ConsoleClient.ApiHelpers;
+﻿using TaxiDispatcher.ConsoleClient.ApiHelpers;
 using TaxiDispatcher.ConsoleClient.Models;
 
 namespace TaxiDispatcher.ConsoleClient
 {
     public class ConsoleClient
     {
-        private TaxiDispatcherApiClient? _taxiDispatcher;
+        private readonly ITaxiDispatcherApiClient _taxiDispatcher;
 
-        public async Task Run(IServiceProvider services)
+        public ConsoleClient(ITaxiDispatcherApiClient taxiDispatcher)
         {
-            _taxiDispatcher = ActivatorUtilities.GetServiceOrCreateInstance<TaxiDispatcherApiClient>(services);
+            _taxiDispatcher = taxiDispatcher;
+        }
 
+        public async Task Run()
+        {
             await OrderRide(5, 0, 0, new DateTime(2018, 1, 1, 23, 0, 0));
-            
+
             Console.WriteLine();
-            
+
             await OrderRide(0, 12, 1, new DateTime(2018, 1, 1, 9, 0, 0));
 
             Console.WriteLine();
@@ -29,31 +31,27 @@ namespace TaxiDispatcher.ConsoleClient
             Console.WriteLine();
 
             await GetDriverEarnings(2);
-            
-            Console.WriteLine();
-            
+
             Console.ReadLine();
         }
 
         private async Task OrderRide(int from, int to, int type, DateTime time)
         {
-            if (_taxiDispatcher == null)
-            {
-                return;
-            }
-
             Console.WriteLine($"Ordering ride from {from} to {to} ...");
 
-            ResponseResult<Ride> rideRequestResponse = await _taxiDispatcher.OrderRide(new RideRequest
-                { LocationFrom = from, LocationTo = to, RideType = type, RideTime = time });
+            var request = new RideRequest { LocationFrom = from, LocationTo = to, RideType = type, RideTime = time };
+
+            ResponseResult<Ride> rideRequestResponse = await _taxiDispatcher.OrderRide(request);
 
             if (rideRequestResponse.Succeeded && rideRequestResponse.Data != null)
             {
                 int price = rideRequestResponse.Data.Price;
                 Guid rideId = rideRequestResponse.Data.Id;
+
                 Console.WriteLine("Ride ordered, price: " + price);
+
                 ResponseResult<Ride> acceptRideResponse = await _taxiDispatcher.AcceptRide(rideId);
-                
+
                 if (acceptRideResponse.Succeeded && acceptRideResponse.Data != null)
                 {
                     Console.WriteLine($"Ride accepted, waiting for driver: {acceptRideResponse.Data.Taxi.DriverName}");
@@ -71,11 +69,6 @@ namespace TaxiDispatcher.ConsoleClient
 
         private async Task GetDriverEarnings(int driverId)
         {
-            if (_taxiDispatcher == null)
-            {
-                return;
-            }
-
             Console.WriteLine($"Driver with ID = {driverId} earned today:");
 
             ResponseResult<string> driverEarnings = await _taxiDispatcher.GetDriverEarnings(driverId);

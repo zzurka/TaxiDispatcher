@@ -18,9 +18,9 @@ namespace TaxiDispatcher.Application.Taxis.Handlers
         {
             var result = await _taxiRepository.UpdateTaxiLocation(request.Id, request.Location);
 
-            return result 
-                ? ServiceResult.Success<bool>(true) 
-                : ServiceResult.Failed<bool>(ServiceError.CustomMessage("Update location failed! Taxi not found!"));
+            return result
+                ? ServiceResult.Success<bool>(true)
+                : ServiceResult.Failed<bool>(ServiceError.TaxiNotFound(request.Id));
         }
     }
 }

@@ -24,7 +24,7 @@ namespace TaxiDispatcher.Application.Taxis.Handlers
             
             return taxi != null
                 ? ServiceResult.Success(_mapper.Map<TaxiDto>(taxi))
-                : ServiceResult.Failed<TaxiDto>(ServiceError.TaxiNotFound);
+                : ServiceResult.Failed<TaxiDto>(ServiceError.TaxiNotFound(request.Id));
         }
     }
 }

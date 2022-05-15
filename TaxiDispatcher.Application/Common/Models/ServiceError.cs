@@ -18,10 +18,12 @@
         public static ServiceError ModelStateError(string validationError) => new(validationError, 101);
         public static ServiceError CustomMessage(string errorMessage) => new(errorMessage, 102);
         public static ServiceError NotFound => new("The specified resource was not found.", 103);
-        public static ServiceError ValidationFormat => new ("Request object format is not valid.", 104);
+        public static ServiceError ValidationFormat => new("Request object format is not valid.", 104);
         public static ServiceError Validation => new("One or more validation errors occurred.", 105);
-        public static ServiceError TaxiNotFound => new("Taxi not found.", 106);
-        public static ServiceError RideNotFound => new("Ride not found.", 107);
+        public static ServiceError TaxiNotFound(Guid id) => new($"Taxi (id: {id}) not found.", 106);
+        public static ServiceError DriverTaxiNotFound(int id) => new($"Taxi for driver (id: {id}) not found.", 107);
+        public static ServiceError RideNotFound(Guid id) => new($"Ride (id: {id}) not found.", 108);
+        public static ServiceError NoAvailableTaxiVehicle => new("There are no available taxi vehicles.", 109);
 
         #region Override Equals Operator
 

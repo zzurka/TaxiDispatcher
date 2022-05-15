@@ -32,7 +32,7 @@ namespace TaxiDispatcher.Application.Rides.Handlers
 
             if (Math.Abs(closestTaxi.Location - request.LocationFrom) > 15)
             {
-                return ServiceResult.Failed<RideDto>(ServiceError.CustomMessage("There are no available taxi vehicles!"));
+                return ServiceResult.Failed<RideDto>(ServiceError.NoAvailableTaxiVehicle);
             }
             else
             {
@@ -41,7 +41,7 @@ namespace TaxiDispatcher.Application.Rides.Handlers
 
                 if (taxi == null)
                 {
-                    return ServiceResult.Failed<RideDto>(ServiceError.CustomMessage("There are no available taxi vehicles!"));
+                    return ServiceResult.Failed<RideDto>(ServiceError.TaxiNotFound(closestTaxi.TaxiId));
                 }
 
                 var ride = new Ride
