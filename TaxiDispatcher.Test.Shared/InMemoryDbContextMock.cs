@@ -1,13 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Threading.Tasks;
 using TaxiDispatcher.Infrastructure.Persistence.InMemoryDatabase;
 
-namespace TaxiDispatcher.Test.Unit.Repository
+namespace TaxiDispatcher.Test.Shared
 {
     public static class InMemoryDbContextMock
     {
-        public static async Task<InMemoryDbContext> GetDatabaseContext()
+        public static async Task<InMemoryDbContext> GetDatabaseContextEmpty()
         {
             var options = new DbContextOptionsBuilder<InMemoryDbContext>()
                 .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
@@ -17,6 +15,13 @@ namespace TaxiDispatcher.Test.Unit.Repository
             await databaseContext.Database.EnsureCreatedAsync();
 
             return databaseContext;
+        }
+
+        public static async Task<InMemoryDbContext> GetDatabaseContextPopulated()
+        {
+            InMemoryDbContext context = await GetDatabaseContextEmpty();
+            await InMemoryDbContextSeed.SeedSampleData(context);
+            return context;
         }
     }
 }

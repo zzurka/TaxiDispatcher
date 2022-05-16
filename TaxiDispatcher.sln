@@ -27,11 +27,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiDispatcher.Application"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiDispatcher.Infrastructure", "TaxiDispatcher.Infrastructure\TaxiDispatcher.Infrastructure.csproj", "{BCCCCEAE-4BA5-4C34-889B-1AE19086EB12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiDispatcher.Test.Unit.Application", "TaxiDispatcher.Test.Unit.Application\TaxiDispatcher.Test.Unit.Application.csproj", "{F4CC336D-DA10-42D4-A0D4-CEBD96CE398F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiDispatcher.Test.Unit.Application", "TaxiDispatcher.Test.Unit.Application\TaxiDispatcher.Test.Unit.Application.csproj", "{F4CC336D-DA10-42D4-A0D4-CEBD96CE398F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiDispatcher.Test.Unit.Repository", "TaxiDispatcher.Test.Unit.Repository\TaxiDispatcher.Test.Unit.Repository.csproj", "{ECF2267F-AEF3-4416-BB88-4C6DAFCDE237}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiDispatcher.Test.Unit.Repository", "TaxiDispatcher.Test.Unit.Repository\TaxiDispatcher.Test.Unit.Repository.csproj", "{ECF2267F-AEF3-4416-BB88-4C6DAFCDE237}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiDispatcher.Test.Integration", "TaxiDispatcher.Test.Integration\TaxiDispatcher.Test.Integration.csproj", "{C9832333-3802-4906-9DAC-15E01C2EF73C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxiDispatcher.Test.Integration", "TaxiDispatcher.Test.Integration\TaxiDispatcher.Test.Integration.csproj", "{C9832333-3802-4906-9DAC-15E01C2EF73C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxiDispatcher.Test.Shared", "TaxiDispatcher.Test.Shared\TaxiDispatcher.Test.Shared.csproj", "{D25334FE-1DB0-421C-A570-41EE148BDD54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{C9832333-3802-4906-9DAC-15E01C2EF73C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9832333-3802-4906-9DAC-15E01C2EF73C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9832333-3802-4906-9DAC-15E01C2EF73C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D25334FE-1DB0-421C-A570-41EE148BDD54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D25334FE-1DB0-421C-A570-41EE148BDD54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D25334FE-1DB0-421C-A570-41EE148BDD54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D25334FE-1DB0-421C-A570-41EE148BDD54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +95,7 @@ Global
 		{F4CC336D-DA10-42D4-A0D4-CEBD96CE398F} = {21AB34AE-5422-48EF-B7F8-BC2D370D6C0D}
 		{ECF2267F-AEF3-4416-BB88-4C6DAFCDE237} = {21AB34AE-5422-48EF-B7F8-BC2D370D6C0D}
 		{C9832333-3802-4906-9DAC-15E01C2EF73C} = {21AB34AE-5422-48EF-B7F8-BC2D370D6C0D}
+		{D25334FE-1DB0-421C-A570-41EE148BDD54} = {21AB34AE-5422-48EF-B7F8-BC2D370D6C0D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE7ADC6C-CE1F-456B-8A86-E3376D9072BA}

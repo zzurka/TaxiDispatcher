@@ -24,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\TaxiDispatcher.Domain\TaxiDispatcher.Domain.csproj" />
     <ProjectReference Include="..\TaxiDispatcher.Infrastructure\TaxiDispatcher.Infrastructure.csproj" />
+    <ProjectReference Include="..\TaxiDispatcher.Test.Shared\TaxiDispatcher.Test.Shared.csproj" />
   </ItemGroup>
 
 </Project>
