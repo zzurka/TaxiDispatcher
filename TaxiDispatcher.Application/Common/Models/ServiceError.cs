@@ -14,7 +14,7 @@
         public string Message { get; } = string.Empty;
         public int Code { get; }
 
-        public static ServiceError DefaultError => new("An exception occured.", 100);
+        public static ServiceError DefaultError => new("An exception occurred.", 100);
         public static ServiceError ModelStateError(string validationError) => new(validationError, 101);
         public static ServiceError CustomMessage(string errorMessage) => new(errorMessage, 102);
         public static ServiceError NotFound => new("The specified resource was not found.", 103);
